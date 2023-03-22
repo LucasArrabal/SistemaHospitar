@@ -1,0 +1,43 @@
+﻿@{
+    ViewData["Title"] = "Criar";
+}
+<div class="text-center">
+
+     <h1 class="display-4">Cadastro do Paciente</h1>
+</div>
+     <form>
+
+        <div class="form-control">
+            <label for="name">Nome:</label>
+            <input type="text" class="form-control" placeholder="Nome Completo">
+         </div>
+        <br />
+        <div class="form-control">
+            <label for="diagnostico">Diagnostico:</label>
+            <input type="text" class="form-control" placeholder="Diagnostico" >
+            </div>
+        <br />
+        <div class="form-control">
+            <label for="date">Data de nascimento:</label>
+            <input type="date" class="form-control">
+        </div>
+        <br />
+        <div class="form-control">
+            <label for="date">Data de Entrada:</label>
+            <input type="date" class="form-control">
+        </div>
+        <br />
+        <div class="form-control">
+            <select class="form-select" >
+                <option selected>Status</option>
+                <option value="1">Internado</option>
+                <option value="2">Alta</option>
+            </select>
+        </div>
+        <br />
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
+        <a class="btn btn-secondary" asp-controller="Paciente" asp-action="Index">Voltar</a>
+
+    </form>
+
+
