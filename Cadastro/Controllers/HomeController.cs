@@ -4,7 +4,7 @@ using System.Diagnostics;
 
 namespace Cadastro.Controllers
 {
-    public class HomeController : Controller
+    public class BancoContext : Controller
     {
         public IActionResult Index()
         {
