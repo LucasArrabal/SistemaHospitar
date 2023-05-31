@@ -1,4 +1,11 @@
+using Cadastro.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+
+
+builder.Services.AddDbContext<CadastroContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DataBase")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
