@@ -1,4 +1,5 @@
 using Cadastro.Data;
+using Cadastro.Repositorio;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,6 +7,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<CadastroContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DataBase")));
+
+builder.Services.AddScoped <IPacienteRepositorio ,PacienteRepositorio>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
