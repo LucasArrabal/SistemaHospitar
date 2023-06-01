@@ -1,37 +1,38 @@
-﻿@{
+﻿@model Paciente
+@{
     ViewData["Title"] = "Criar";
 }
 <div class="text-center">
 
      <h1 class="display-4">Cadastro do Paciente</h1>
 </div>
-     <form>
+     <form asp-controller="Paciente" asp-action="Criar" method="post">
 
         <div class="form-control">
             <label for="name">Nome:</label>
-            <input type="text" class="form-control" placeholder="Nome Completo">
+        <input type="text" asp-for="Name" class="form-control" placeholder="Nome Completo">
          </div>
         <br />
         <div class="form-control">
             <label for="diagnostico">Diagnostico:</label>
-            <input type="text" class="form-control" placeholder="Diagnostico" >
+        <input type="text" asp-for="Diagnostico" class="form-control" placeholder="Diagnostico">
             </div>
         <br />
         <div class="form-control">
             <label for="date">Data de nascimento:</label>
-            <input type="date" class="form-control">
+        <input type="date" asp-for="DtNascimento" class="form-control">
         </div>
         <br />
         <div class="form-control">
             <label for="date">Data de Entrada:</label>
-            <input type="date" class="form-control">
+        <input type="date" asp-for="DtEntrada" class="form-control">
         </div>
         <br />
         <div class="form-control">
-            <select class="form-select" >
+        <select asp-for="Status" class="form-select">
                 <option selected>Status</option>
-                <option value="1">Internado</option>
-                <option value="2">Alta</option>
+            <option value="Internado">Internado</option>
+            <option value="Alta">Alta</option>
             </select>
         </div>
         <br />

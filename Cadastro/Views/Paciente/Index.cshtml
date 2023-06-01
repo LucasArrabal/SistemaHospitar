@@ -1,4 +1,5 @@
-﻿@{
+﻿@model List<Paciente>
+@{
     ViewData["Title"] = "Lista de Pacientes";
 }
 
@@ -22,50 +23,26 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Lucas Arrabal</td>
-                <td>07/02/2003</td>
-                <td>07/03/2023</td>
-                <td>Internado</td>
-                <td>Resfriado</td>
-                <th scope="col">
-                    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                        <a role="button" class="btn btn-warning" asp-controller="Paciente" asp-action="Editar">Editar</a>
-                        <a role="button" class="btn btn-danger" asp-controller="Paciente" asp-action="Apagar">Deletar</a>
-                    </div>
-                </th>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Luca Arrabal</td>
-                <td>07/02/2003</td>
-                <td>07/03/2023</td>
-                <td>Internado</td>
-                <td>Resfriado</td>
-                <th scope="col">
-                    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                        <a role="button" class="btn btn-warning" asp-controller="Paciente" asp-action="Editar">Editar</a>
-                        <a role="button" class="btn btn-danger" asp-controller="Paciente" asp-action="Apagar">Deletar</a>
-                    </div>
-                </th>
-
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Lu Arrabal</td>
-                <td>07/02/2003</td>
-                <td>07/03/2023</td>
-                <td>Internado</td>
-                <td>Resfriado</td>
-                <th scope="col">
-                    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                        <a role="button" class="btn btn-warning" asp-controller="Paciente" asp-action="Editar">Editar</a>
-                        <a role="button" class="btn btn-danger" asp-controller="Paciente" asp-action="Apagar">Deletar</a>
-                    </div>
-                </th>
-            </tr>
-
+            @if(Model != null && Model.Any())
+            {
+                foreach (Paciente paciente in Model)
+                {
+                    <tr>
+                        <th scope="row">@paciente.Id</th>
+                        <td>@paciente.Name</td>
+                        <td>@paciente.DtNascimento</td>
+                        <td>@paciente.DtEntrada</td>
+                        <td>@paciente.Status</td>
+                        <td>@paciente.Diagnostico</td>
+                        <th scope="col">
+                            <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                <a role="button" class="btn btn-warning" asp-route-id="@paciente.Id" asp-controller="Paciente" asp-action="Editar">Editar</a>
+                                <a role="button" class="btn btn-danger" asp-route-id="@paciente.Id" asp-controller="Paciente" asp-action="Apagar">Deletar</a>
+                            </div>
+                        </th>
+                    </tr>
+                }
+            }
         </tbody>
     </table>
 </div>
