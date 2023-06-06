@@ -1,6 +1,7 @@
 ﻿using Cadastro.Models;
 using Cadastro.Repositorio;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace Cadastro.Controllers
 {
@@ -39,14 +40,25 @@ namespace Cadastro.Controllers
         [HttpPost]
         public IActionResult Criar(Paciente paciente)
         {
-            _pacienteRepositorio.Adicionar(paciente);
-            return RedirectToAction("Index");
+            if(ModelState.IsValid)
+            {
+                _pacienteRepositorio.Adicionar(paciente);
+                return RedirectToAction("Index");
+            }
+
+             return View(paciente);
+
         }
         [HttpPost]
         public IActionResult Alterar(Paciente paciente)
         {
-            _pacienteRepositorio.Atualizar(paciente);
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                _pacienteRepositorio.Adicionar(paciente);
+                return RedirectToAction("Index");
+            }
+
+            return View("Index" , paciente);
         }
 
     }
