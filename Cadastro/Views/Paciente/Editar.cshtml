@@ -12,21 +12,25 @@
     <div class="form-control">
         <label for="name">Nome:</label>
         <input type="text" asp-for="Name" class="form-control" placeholder="Nome Completo">
+        @Html.ValidationMessageFor(x => x.Name)
     </div>
     <br />
     <div class="form-control">
         <label for="diagnostico">Diagnostico:</label>
         <input type="text" asp-for="Diagnostico" class="form-control" placeholder="Diagnostico">
+        @Html.ValidationMessageFor(x => x.Diagnostico)
     </div>
     <br />
     <div class="form-control">
         <label for="date">Data de nascimento:</label>
         <input type="date" asp-for="DtNascimento" class="form-control">
+        @Html.ValidationMessageFor(x => x.DtNascimento)
     </div>
     <br />
     <div class="form-control">
         <label for="date">Data de Entrada:</label>
         <input type="date" asp-for="DtEntrada" class="form-control">
+        @Html.ValidationMessageFor(x => x.DtEntrada)
     </div>
     <br />
     <div class="form-control">
@@ -35,6 +39,7 @@
             <option value="Internado">Internado</option>
             <option value="Alta">Alta</option>
         </select>
+        @Html.ValidationMessageFor(x => x.Status)
     </div>
     <br />
     <button type="submit" class="btn btn-primary">Gravar</button>
