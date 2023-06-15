@@ -33,32 +33,69 @@ namespace Cadastro.Controllers
         }
         public IActionResult Deletar(int id)
         {
-            _pacienteRepositorio.Deletar(id);
-            return RedirectToAction("Index");
+            try
+            {
+               bool apagado =  _pacienteRepositorio.Deletar(id);
+                if (apagado)
+                {
+                    TempData["MensagemSucesso"] = "Contato apagado com sucesso";
+                }
+                else
+                {
+                    TempData["MensagemErro"] = "Ops, não conseguimos apagar";
+                }
+                return RedirectToAction("Index");
+            }
+            catch (Exception erro)
+            {
+                TempData["MensagemErro"] = $"Ops, não conseguimos cadastrar, detalhe do erro:{erro.Message}";
+                return RedirectToAction("Index");
+            }
+
         }
 
         [HttpPost]
         public IActionResult Criar(Paciente paciente)
         {
-            if(ModelState.IsValid)
+            try
             {
-                _pacienteRepositorio.Adicionar(paciente);
-                return RedirectToAction("Index");
-            }
+                if (ModelState.IsValid)
+                {
+                    _pacienteRepositorio.Adicionar(paciente);
+                    TempData["MensagemSucesso"] = "Contato cadastrado com sucesso";
+                    return RedirectToAction("Index");
+                }
 
-             return View(paciente);
+                return View(paciente);
+            }
+            catch (Exception erro)
+            {
+                TempData["MensagemErro"] = $"Ops, não conseguimos cadastrar, detalhe do erro:{erro.Message}";
+                return RedirectToAction("Index");
+               
+            }
 
         }
         [HttpPost]
         public IActionResult Alterar(Paciente paciente)
         {
-            if (ModelState.IsValid)
+            try
             {
-                _pacienteRepositorio.Adicionar(paciente);
+                if (ModelState.IsValid)
+                {
+                    _pacienteRepositorio.Adicionar(paciente);
+                    TempData["MensagemSucesso"] = "Contato alterado com sucesso";
+                    return RedirectToAction("Index");
+                }
+
+                return View("Index", paciente);
+            }
+            catch (Exception erro)
+            {
+
+                TempData["MensagemErro"] = $"Ops, não conseguimos alterar, detalhe do erro:{erro.Message}";
                 return RedirectToAction("Index");
             }
-
-            return View("Index" , paciente);
         }
 
     }
