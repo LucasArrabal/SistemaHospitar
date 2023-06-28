@@ -2,6 +2,11 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your JavaScript code.
+
+let table = new DataTable('#table-paciente');
+
+
+
 $('.close-alert').click(function () {
     $('.alert').hide('hdie');
 });
